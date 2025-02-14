@@ -29,5 +29,5 @@ GET /viaggi: Ottiengo tutti i viaggi.
 POST /prenotazioni: Creo una nuova prenotazione (associare un dipendente a un viaggio).
 GET /prenotazioni: Ottiengo tutte le prenotazioni.
 PUT /viaggi/{id}: Modifico un viaggio
-PATCH /viaggi/{id}/stato: Modifico lo stato del viaggio.
+PATCH /viaggi/{id}/stato: Modifico lo stato del viaggio. Questa ho provato a farla e l'ho lasciata commentata
 POST /dipendenti/{id}/profile-image: Carica l'immagine del profilo per il dipendente.
