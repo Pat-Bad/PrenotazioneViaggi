@@ -12,16 +12,11 @@ import java.time.LocalDate;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class viaggioRequest {
+public class ViaggioRequest {
     @NotBlank(message = "il campo destinazione non deve essere vuoto")
     private String destinazione;
     @Future(message = "la data deve essere futura")
     private LocalDate data;
     @NotNull(message = "il campo stato non deve essere vuoto")
     private StatoViaggio statoViaggio;
-
-
-    public static boolean existsByLocalDate(@NotBlank(message = "il campo destinazione non deve essere vuoto") String destinazione) {
-        return false;
-    }
 }

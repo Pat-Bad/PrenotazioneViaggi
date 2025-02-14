@@ -12,11 +12,11 @@ import java.time.LocalDate;
 
 @Service
 @RequiredArgsConstructor
-public class viaggioService {
+public class ViaggioService {
     private final ViaggioRepository viaggioRepository;
 
     //POST
-    public CreateResponse save(@Valid viaggioRequest request) {
+    public CreateResponse save(@Valid ViaggioRequest request) {
         LocalDate dataViaggio = request.getData();
         if (viaggioRepository.existsByData(dataViaggio)) {
             throw new EntityExistsException("Il viaggio con data " + request.getData() + " esiste già");
@@ -31,7 +31,7 @@ public class viaggioService {
     }
 
     //PUT
-    public Viaggio update(Long id, @Valid viaggioRequest request) {
+    public Viaggio update(Long id, @Valid ViaggioRequest request) {
         if(!viaggioRepository.existsById(id)) {
             throw new EntityNotFoundException("Il viaggio con id" + id + "non è stato trovato");
         }

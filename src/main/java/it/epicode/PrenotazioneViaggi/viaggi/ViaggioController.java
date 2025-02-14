@@ -8,37 +8,37 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/viaggi")
+@RequestMapping("api/viaggi")
 public class ViaggioController {
-    private final viaggioService viaggioService;
+    private final ViaggioService viaggioService;
     private final ViaggioRepository viaggioRepository;
 
-    @GetMapping("/viaggi")
+    @GetMapping("")
     @ResponseStatus(HttpStatus.OK)
     public List<Viaggio> findAll(){
         return viaggioRepository.findAll();
     }
 
-    @GetMapping("viaggi/{id}")
+    @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Viaggio findById(@PathVariable Long id){
         return viaggioService.findById(id);
     }
 
-    @PostMapping("viaggi")
+    @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public CreateResponse save(@RequestBody viaggioRequest request){
+    public CreateResponse save(@RequestBody ViaggioRequest request){
         return viaggioService.save(request);
     }
 
-    @PutMapping("viaggi/{id}")
+    @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Viaggio update(@PathVariable Long id, @RequestBody viaggioRequest request){
+    public Viaggio update(@PathVariable Long id, @RequestBody ViaggioRequest request){
         return viaggioService.update(id, request);
     }
 
 
-    @DeleteMapping("viaggi/{id}")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id){
         viaggioService.delete(id);

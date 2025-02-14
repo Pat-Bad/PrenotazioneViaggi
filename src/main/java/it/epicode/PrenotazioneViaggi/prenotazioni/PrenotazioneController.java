@@ -1,7 +1,5 @@
 package it.epicode.PrenotazioneViaggi.prenotazioni;
 
-import it.epicode.PrenotazioneViaggi.dipendenti.Dipendente;
-import it.epicode.PrenotazioneViaggi.dipendenti.dipendenteRequest;
 import it.epicode.PrenotazioneViaggi.responses.CreateResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -13,32 +11,32 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/prenotazioni")
 public class PrenotazioneController {
-    private final prenotazioneService prenotazioneService;
+    private final PrenotazioneService prenotazioneService;
 
-    @GetMapping("prenotazioni")
+    @GetMapping("")
     @ResponseStatus(HttpStatus.OK)
     public List<Prenotazione> findAll(){
         return prenotazioneService.findAll();
     }
 
-    @GetMapping("prenotazioni/{id}")
+    @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Prenotazione findById(@PathVariable Long id){
         return prenotazioneService.findById(id);
     }
 
-    @PostMapping("prenotazioni")
+    @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public CreateResponse save(@RequestBody prenotazioneRequest request){
+    public CreateResponse save(@RequestBody PrenotazioneRequest request){
         return prenotazioneService.save(request);
     }
 
-    @PutMapping("prenotazioni/{id}")
+    @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Prenotazione update(@PathVariable Long id, @RequestBody prenotazioneRequest request){
+    public Prenotazione update(@PathVariable Long id, @RequestBody PrenotazioneRequest request){
         return prenotazioneService.update(id, request);
     }
-    @DeleteMapping("prenotazioni/{id}")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id){
         prenotazioneService.delete(id);

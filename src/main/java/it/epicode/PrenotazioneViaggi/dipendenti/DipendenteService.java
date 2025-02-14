@@ -10,19 +10,18 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 @RequiredArgsConstructor
-public class dipendenteService {
-    private final dipendenteRepository dipendenteRepository;
+public class DipendenteService {
+    private final DipendenteRepository dipendenteRepository;
     private final ViaggioRepository viaggioRepository;
+
     //qua devo mettere i metodi per le CRUD
-    //Ho creato la CREATERESPONSE di modo da ricevere indietro l'id di quello che vado a salvare
+    //Ho creato la CREATERESPONSE
     //La REQUEST, cioè il DTO per il payload (nella mia testa ha senso)
 
     //POST
-    public CreateResponse save(@Valid dipendenteRequest request) {
+    public CreateResponse save(@Valid DipendenteRequest request) {
         if(dipendenteRepository.existsByUsername(request.getUsername())) {
             throw new EntityExistsException("L'utente con username " + request.getUsername() + " esiste già");
         }
@@ -40,9 +39,10 @@ public class dipendenteService {
     }
 
     //PUT
-    public Dipendente update(Long id, @Valid dipendenteRequest request) {
+    public Dipendente update(Long id, @Valid DipendenteRequest request) {
         if(!dipendenteRepository.existsById(id)) {
             throw new EntityNotFoundException("L'utente con id " + id + " non esiste");}
+
         Dipendente dipendente = dipendenteRepository.findById(id).get();
         BeanUtils.copyProperties(request, dipendente);
         dipendenteRepository.save(dipendente);
@@ -55,11 +55,6 @@ public class dipendenteService {
         dipendenteRepository.delete(dipendente);
     }
 
-    public List<Dipendente> findAll() {
-        return dipendenteRepository.findAll();
-    }
-
     public Dipendente findById(Long id) {
         return dipendenteRepository.findById(id).get();
-    }
-}
+}}

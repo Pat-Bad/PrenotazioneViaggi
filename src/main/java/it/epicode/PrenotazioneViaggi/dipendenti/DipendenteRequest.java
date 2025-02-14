@@ -1,6 +1,5 @@
 package it.epicode.PrenotazioneViaggi.dipendenti;
 
-import it.epicode.PrenotazioneViaggi.viaggi.Viaggio;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -11,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class dipendenteRequest {
+public class DipendenteRequest {
     @NotBlank(message="il campo username non può rimanere vuoto")
     private String username;
     @NotBlank(message = "il campo nome non deve essere vuoto")

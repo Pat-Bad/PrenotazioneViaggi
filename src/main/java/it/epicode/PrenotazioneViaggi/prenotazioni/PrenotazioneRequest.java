@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class prenotazioneRequest {
+public class PrenotazioneRequest {
     @Future(message = "la data deve essere futura")
     private LocalDate data;
     @NotBlank(message = "il campo note non deve essere vuoto")

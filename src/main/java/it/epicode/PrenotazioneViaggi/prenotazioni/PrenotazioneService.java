@@ -1,7 +1,7 @@
 package it.epicode.PrenotazioneViaggi.prenotazioni;
 
 import it.epicode.PrenotazioneViaggi.dipendenti.Dipendente;
-import it.epicode.PrenotazioneViaggi.dipendenti.dipendenteRepository;
+import it.epicode.PrenotazioneViaggi.dipendenti.DipendenteRepository;
 import it.epicode.PrenotazioneViaggi.responses.CreateResponse;
 import it.epicode.PrenotazioneViaggi.viaggi.Viaggio;
 import it.epicode.PrenotazioneViaggi.viaggi.ViaggioRepository;
@@ -16,13 +16,13 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class prenotazioneService {
-    private final prenotazioneRepository prenotazioneRepository;
+public class PrenotazioneService {
+    private final PrenotazioneRepository prenotazioneRepository;
     private final ViaggioRepository viaggioRepository;
-    private final dipendenteRepository dipendenteRepository;
+    private final DipendenteRepository dipendenteRepository;
 
     //POST
-    public CreateResponse save(@Valid prenotazioneRequest request) {
+    public CreateResponse save(@Valid PrenotazioneRequest request) {
         if(prenotazioneRepository.existsByData(request.getData())) {
             throw new EntityExistsException("In questa data esiste già una prenotazione");
         }
@@ -45,7 +45,7 @@ public class prenotazioneService {
     }
 
     //PUT
-    public Prenotazione update(Long id, @Valid prenotazioneRequest request) {
+    public Prenotazione update(Long id, @Valid PrenotazioneRequest request) {
         if(!prenotazioneRepository.existsById(id)) {
             throw new EntityNotFoundException("Prenotazione non trovata");
         }
