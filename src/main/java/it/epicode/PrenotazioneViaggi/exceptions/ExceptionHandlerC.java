@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
-public class ExceptionHandlerClass {
+public class ExceptionHandlerC {
     @ExceptionHandler(value = EntityExistsException.class)
     protected ResponseEntity<Error> alreadyExistsException(EntityExistsException ex) {
         Error error = new Error();
